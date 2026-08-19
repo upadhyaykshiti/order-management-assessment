@@ -89,13 +89,17 @@ def seed_menu() -> None:
 #     seed_menu()
 #     yield
 
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     Base.metadata.create_all(bind=engine)
+
+#     if os.getenv("TESTING") != "1":
+#         seed_menu()
+
+#     yield
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    Base.metadata.create_all(bind=engine)
-
-    if os.getenv("TESTING") != "1":
-        seed_menu()
-
     yield
 
 
